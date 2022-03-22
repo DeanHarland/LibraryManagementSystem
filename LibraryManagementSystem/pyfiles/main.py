@@ -2,14 +2,13 @@ from tkinter import *
 from PIL import ImageTk, Image  # PIL -> Pillow
 import pymysql
 import os
-#import pymysql.cursors
+# import pymysql.cursors
 from tkinter import messagebox
 from addbook import *
 from deletebooks import *
 from viewbooks import *
 from issuebook import *
 from returnbooks import *
-
 
 # Connecting to MySql server
 my_password = "mypass123"
@@ -19,9 +18,6 @@ connect_db = pymysql.connect(host="localhost",
                              password="mypass123",
                              database="librarydb")
 cursr = connect_db.cursor()
-
-
-
 
 # Creating window frame
 root = Tk()
@@ -64,20 +60,20 @@ header_label = Label(header_frame, text="Welcome to the Library System", bg="whi
 header_label.place(relx=0, rely=0, relwidth=1, relheight=1)
 
 # Buttons
-btn_addbook = Button(root, text="Add Book",bg="white", fg="#000d1a",font=("San Francisco", 12), command=addBook)
-btn_addbook.place(relx=0.35,rely=0.3, relwidth=0.3,relheight=0.1)
+btn_addbook = Button(root, text="Add Book", bg="white", fg="#000d1a", font=("San Francisco", 12), command=addBook)
+btn_addbook.place(relx=0.35, rely=0.3, relwidth=0.3, relheight=0.1)
 
-btn_deletebook = Button(root, text="Delete Book",bg="white", fg="#000d1a",font=("San Francisco", 12), command=delete)
-btn_deletebook.place(relx=0.35,rely=0.4, relwidth=0.3,relheight=0.1)
+btn_deletebook = Button(root, text="Delete Book", bg="white", fg="#000d1a", font=("San Francisco", 12), command=delete)
+btn_deletebook.place(relx=0.35, rely=0.4, relwidth=0.3, relheight=0.1)
 
-btn_viewbook = Button(root, text="View Book",bg="white", fg="#000d1a",font=("San Francisco", 12), command=bookView)
-btn_viewbook.place(relx=0.35,rely=0.5, relwidth=0.3,relheight=0.1)
+btn_viewbook = Button(root, text="View Book", bg="white", fg="#000d1a", font=("San Francisco", 12), command=bookView)
+btn_viewbook.place(relx=0.35, rely=0.5, relwidth=0.3, relheight=0.1)
 
-btn_issuebook = Button(root, text="Issue Book",bg="white", fg="#000d1a",font=("San Francisco", 12), command=issueBook)
-btn_issuebook.place(relx=0.35,rely=0.6, relwidth=0.3,relheight=0.1)
+btn_issuebook = Button(root, text="Issue Book", bg="white", fg="#000d1a", font=("San Francisco", 12), command=issueBook)
+btn_issuebook.place(relx=0.35, rely=0.6, relwidth=0.3, relheight=0.1)
 
-btn_returnbook = Button(root, text="Return Book",bg="white", fg="#000d1a",font=("San Francisco", 12), command=returnBook)
-btn_returnbook.place(relx=0.35,rely=0.7, relwidth=0.3,relheight=0.1)
-
+btn_returnbook = Button(root, text="Return Book", bg="white", fg="#000d1a", font=("San Francisco", 12),
+                        command=returnBook)
+btn_returnbook.place(relx=0.35, rely=0.7, relwidth=0.3, relheight=0.1)
 
 root.mainloop()

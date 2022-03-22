@@ -15,7 +15,7 @@ book_table = "books"
 issued_table = "books_issued"
 all_book_id = []
 
-
+# Takes inputted bookId and returns it to available
 def returnB():
     global btn_return, btn_quit, canvas1, connect_db, root, label_frame, label_return_1, return_info_1, status
 
@@ -24,6 +24,7 @@ def returnB():
     extracted_book_id = "select bookid from " + issued_table
     print(extracted_book_id)
 
+    # Try to see if book exists and if the book is "issued"
     try:
         cursr.execute(extracted_book_id)
         connect_db.commit()
@@ -49,9 +50,9 @@ def returnB():
         messagebox.showinfo("Error!", "Cannot find Book ID")
 
     issue_to_sql = "delete from " + issued_table + " where bookid = '" + book_id + "'"
-
     update_status = "update " + book_table + " set status = 'avail' where bookid = '" + book_id + "'"
 
+    # Try, if book is in collection and is issued update book as returned
     try:
         if book_id in all_book_id and status == True:
             cursr.execute(issue_to_sql)
@@ -70,7 +71,7 @@ def returnB():
     all_book_id.clear()
     root.destroy()
 
-
+# Creates window and labels for the return page.
 def returnBook():
     global return_info_1, btn_return, btn_quit, canvas1, connect_db, cursr, root, label_frame, label_return_1
     # Creating window

@@ -15,6 +15,7 @@ book_table = "books"
 issued_table = "books_issued"
 all_book_id = []
 
+# Takes user and book id and adds it to issued book table if available
 def issue():
     global btn_issue, label_frame, label_issue_1, issue_info_1, label_issue_2, issue_info_2, btn_quit, root, canvas1, status
 
@@ -28,6 +29,7 @@ def issue():
     issue_info_2.destroy()
 
     extracted_book_id = "select bookid from " +book_table
+    # Try to look through book database to see if book is available, if yes status true, else false
     try:
         cursr.execute(extracted_book_id)
         connect_db.commit()
@@ -55,6 +57,7 @@ def issue():
 
     update_status = "update " +book_table+" set status = 'issued' where bookid = '"+bookid+"'"
 
+    # Try, if book is in book collection and status is true update issued book table with book id and user
     try:
         if bookid in all_book_id and status == True:
             cursr.execute(issued_sql)
@@ -77,7 +80,7 @@ def issue():
 
 
 
-
+# Creates window and labels for the issue page.
 def issueBook():
     global btn_issue, label_frame, label_issue_1,issue_info_1, label_issue_2,issue_info_2,btn_quit,root,canvas1,status
 

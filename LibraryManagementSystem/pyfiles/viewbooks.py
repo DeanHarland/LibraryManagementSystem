@@ -13,7 +13,7 @@ connect_db = pymysql.connect(host="localhost",
 cursr = connect_db.cursor()
 book_table = "books"
 
-
+# Creates window and labels with database info to showcase the books.
 def bookView():
     # Creating window
     root = Tk()
@@ -40,7 +40,7 @@ def bookView():
     y = 0.3
 
     # Create label and align text along
-    Label(label_frame, text="%-10s%-50s%-20s%-20s" % ("bookID", "Title", "Author", "Status")
+    Label(label_frame, text='{:<20} {:<60} {:<40} {:<20}'.format("bookID", "Title", "Author", "Status")
           , bg="white").place(relx=0.05, rely=0.1)
 
     Label(label_frame,
@@ -53,7 +53,7 @@ def bookView():
         cursr.execute(get_books)
         connect_db.commit()
         for i in cursr:
-            Label(label_frame, text="%-10s%-50s%-20s%-20s" % (i[0], i[1], i[2], i[3],), bg="white").place(relx=0.05,
+            Label(label_frame, text='{:<20} {:40.40} {:40.40} {:20.20}'.format(i[0], i[1], i[2], i[3],), bg="white").place(relx=0.05,
                                                                                                           rely=y)
             y += 0.1
     except:
